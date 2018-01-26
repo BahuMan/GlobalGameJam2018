@@ -4,33 +4,51 @@ using UnityEngine;
 
 public class ButtonScript : MonoBehaviour {
 
-    private void OnTriggerEnter(Collider other)
+    private GameObject tile;
+
+    private void Update()
     {
-        if (other.tag == "Player")
+        InputHandler();
+    }
+
+    private void InputHandler()
+    {
+        if (Input.GetButtonDown("Fire1"))
         {
-            TopDownController controller = other.GetComponent<TopDownController>();
+            tile = RayCastCheck();
+            if (tile != null)
+            {
+                // Tile needs rotate function + 90
+                transform.parent = tile.transform;
+                Debug.Log("Lel");
+            }
+        }
 
-            controller.CanPressButton = true;
-
-            controller.ButtonPressed += OnButtonPressed;
-            Debug.Log("Entered");
+        if (Input.GetButtonDown("Fire2"))
+        {
+            tile = RayCastCheck();
+            if (tile != null)
+            {
+                transform.parent = tile.transform;
+                // rotate -90
+            }
         }
     }
 
-    private void OnTriggerExit(Collider other)
+
+    private GameObject RayCastCheck()
     {
-        if (other.tag == "Player")
+        GameObject returnValue;
+        Ray ray = new Ray(this.transform.position, transform.up * -1);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 5))
         {
-            TopDownController controller = other.GetComponent<TopDownController>();
-
-            controller.CanPressButton = false;
-
-            controller.ButtonPressed -= OnButtonPressed;
+            returnValue = hit.collider.gameObject;
         }
-    }
 
-    private void OnButtonPressed(object sender, ButtonPressedEventArgs input)
-    {
-        Debug.Log("kappa");
-    }
+        else returnValue = null;
+
+        return returnValue;
+    } 
 }
