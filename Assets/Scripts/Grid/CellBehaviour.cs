@@ -11,6 +11,9 @@ public class CellBehaviour : MonoBehaviour {
     [SerializeField]
     Color _darkColor;
 
+    [General.EnumFlag]
+    public DirectionEnum test;
+
     private bool _lit = false;
     private bool _dirty = false;
 
