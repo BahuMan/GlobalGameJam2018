@@ -26,8 +26,7 @@ public class ButtonScript : MonoBehaviour {
             if (tile != null)
             {
                 transform.parent = tile.transform;
-                // Tile needs rotate function + 90
-                tile.StartRotate(90);
+                tile.StartRotate(90, gameObject);
                 tile.RotateClockwise();
                 _grid.Propagate();
             }
@@ -40,8 +39,7 @@ public class ButtonScript : MonoBehaviour {
             {
                 transform.parent = tile.transform;
                 tile.RotateCounterClockwise();
-                tile.StartRotate(-90);
-                // rotate -90
+                tile.StartRotate(-90, gameObject);
                 _grid.Propagate();
             }
         }

@@ -22,6 +22,7 @@ public class CellBehaviour : MonoBehaviour {
     private Vector3 _currentRotation;
     private Vector3 _targetRotation;
     private float _lerpAmt;
+    private GameObject _player;
 
     public void SignalFromDirection(DirectionEnum worldDir, Color beamColor)
     {
@@ -91,13 +92,20 @@ public class CellBehaviour : MonoBehaviour {
             _lerpAmt += Time.deltaTime;
             yield return null;
         }
+        _player.GetComponent<ButtonScript>().enabled = true;
+        _player.GetComponent<TopDownController>().enabled = true;
+
+        _player = null;
 
     }
 
-    public void StartRotate(float amt)
+    public void StartRotate(float amt, GameObject player)
     {
         _currentRotation = transform.eulerAngles;
         _targetRotation = new Vector3(0, transform.eulerAngles.y + amt, 0);
+        _player = player;
+        _player.GetComponent<ButtonScript>().enabled = false;
+        _player.GetComponent<TopDownController>().enabled = false;
         StartCoroutine("RotateTile");
     }
 
