@@ -2,9 +2,9 @@
 using System.Text;
 using UnityEngine;
 
+[System.Flags]
 public enum DirectionEnum
 {
-    EMPTY = 0,
     NORTH = 1,
     EAST = 2,
     SOUTH = 4,
@@ -12,23 +12,6 @@ public enum DirectionEnum
 }
 
 public class Direction {
-    public static DirectionEnum Clockwise(DirectionEnum dir)
-    {
-        switch (dir)
-        {
-            case DirectionEnum.WEST: return DirectionEnum.NORTH;
-            default: return (DirectionEnum)((int)dir << 1);
-        }
-    }
-
-    public static DirectionEnum CounterClockwise(DirectionEnum dir)
-    {
-        switch (dir)
-        {
-            case DirectionEnum.NORTH: return DirectionEnum.WEST;
-            default: return (DirectionEnum)((int)dir >> 1);
-        }
-    }
 
     public static float ToAngle(DirectionEnum dir)
     {
@@ -56,7 +39,7 @@ public class Direction {
 
     public static DirectionEnum RotateClockWise(DirectionEnum input)
     {
-        DirectionEnum output = DirectionEnum.EMPTY;
+        DirectionEnum output = (DirectionEnum) 0;
 
 
         if (Contains(input, DirectionEnum.WEST))
@@ -77,7 +60,7 @@ public class Direction {
 
     public static DirectionEnum RotateCounterClockWise(DirectionEnum input)
     {
-        DirectionEnum output = DirectionEnum.EMPTY;
+        DirectionEnum output = (DirectionEnum) 0;
 
         if (Contains(input, DirectionEnum.EAST))
             output = Add(output, DirectionEnum.NORTH);

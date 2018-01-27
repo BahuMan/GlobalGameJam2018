@@ -16,14 +16,6 @@ public class CellBehaviour : MonoBehaviour {
     private Quaternion ROTATE_CLOCK = Quaternion.Euler(0, 90, 0);
     private Quaternion ROTATE_COUNTER = Quaternion.Euler(0, 90, 0);
 
-    public delegate bool IsSignalAcceptedHandler(Vector3 normalizedLocalDirection);
-    public IsSignalAcceptedHandler IsSignalAccepted;
-
-    private void SetIncoming(DirectionEnum dir)
-    {
-        SetLight((dir & _connected) > 0);
-    }
-
     public void SignalNorth()
     {
         SignalFromDirection(DirectionEnum.NORTH);
@@ -43,31 +35,26 @@ public class CellBehaviour : MonoBehaviour {
     }
     public void SignalFromDirection(DirectionEnum worldDir)
     {
-        Quaternion worldRot = Quaternion.Euler(0, Direction.ToAngle(worldDir), 0);
-        Quaternion localRot = Quaternion.Inverse(this.transform.rotation) * worldRot;
-        DirectionEnum localDir = Direction.FromAngle(localRot.eulerAngles.y);
-        SetIncoming(localDir);
+        SetLight((worldDir & _connected) > 0);
     }
 
     public bool IsOutgoing(DirectionEnum worldDir)
     {
-        Quaternion worldRot = Quaternion.Euler(0, Direction.ToAngle(worldDir), 0);
-        Quaternion localRot = Quaternion.Inverse(this.transform.rotation) * worldRot;
-        DirectionEnum localDir = Direction.FromAngle(localRot.eulerAngles.y);
-
-        return _light && (_connected & localDir) == localDir;
+        return _light && (_connected & worldDir) == worldDir;
     }
 
     [ContextMenu("Clockwise")]
     public void RotateClockwise()
     {
         this.transform.rotation *= ROTATE_CLOCK;
+        this._connected = Direction.RotateClockWise(this._connected);
     }
 
     [ContextMenu("Counter")]
     public void RotateCounterClockwise()
     {
         this.transform.rotation *= ROTATE_COUNTER;
+        this._connected = Direction.RotateCounterClockWise(this._connected);
     }
 
     [ContextMenu("Dark")]
@@ -85,6 +72,8 @@ public class CellBehaviour : MonoBehaviour {
     [ContextMenu("Print Connection")]
     public void PrintConnection()
     {
+        Debug.Log("NORTH: " + Convert.ToString((int)DirectionEnum.NORTH, 2) + " = " + Direction.ToString(DirectionEnum.NORTH));
+        Debug.Log("EAST: " + Convert.ToString((int)DirectionEnum.EAST, 2) + " = " + Direction.ToString(DirectionEnum.EAST));
         Debug.Log("Connections: " + this._connected  + ", bin = " + Convert.ToString((int)this._connected, 2) + " = " + Direction.ToString(this._connected));
     }
 
