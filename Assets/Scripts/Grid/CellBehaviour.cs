@@ -13,16 +13,8 @@ public class CellBehaviour : MonoBehaviour {
 
     [SerializeField]
     [General.EnumFlag]
-    private DirectionEnum _incoming;
-    [SerializeField]
-    [General.EnumFlag]
-    private DirectionEnum _accepted;
+    private DirectionEnum _connected;
 
-    [SerializeField]
-    [General.EnumFlag]
-    private DirectionEnum _outgoing;
-
-    private bool _dirty = false;
     private bool _light = false;
 
     private Quaternion ROTATE_CLOCK = Quaternion.Euler(0, 90, 0);
@@ -31,28 +23,9 @@ public class CellBehaviour : MonoBehaviour {
     public delegate bool IsSignalAcceptedHandler(Vector3 normalizedLocalDirection);
     public IsSignalAcceptedHandler IsSignalAccepted;
 
-    public void SetIncoming(DirectionEnum dir)
+    private void SetIncoming(DirectionEnum dir)
     {
-        _incoming |= dir;
-        _dirty = false;
-        SetLight((_incoming & _accepted) > 0);
-
-    }
-
-    public bool GetIncoming(DirectionEnum dir)
-    {
-        return (_incoming & dir) == dir;
-    }
-
-    //can be checked by specialized script to decide whether to update model or not
-    public bool isDirty ()
-    {
-        return _dirty;
-    }
-
-    public void ClearDirty()
-    {
-        _dirty = false;
+        SetLight((dir & _connected) > 0);
     }
 
     public void SignalNorth()
@@ -78,6 +51,15 @@ public class CellBehaviour : MonoBehaviour {
         Quaternion localRot = Quaternion.Inverse(this.transform.rotation) * worldRot;
         DirectionEnum localDir = Direction.FromAngle(localRot.eulerAngles.y);
         SetIncoming(localDir);
+    }
+
+    public bool IsOutgoing(DirectionEnum worldDir)
+    {
+        Quaternion worldRot = Quaternion.Euler(0, Direction.ToAngle(worldDir), 0);
+        Quaternion localRot = Quaternion.Inverse(this.transform.rotation) * worldRot;
+        DirectionEnum localDir = Direction.FromAngle(localRot.eulerAngles.y);
+
+        return _light && (_connected & localDir) == localDir;
     }
 
     [ContextMenu("Clockwise")]
@@ -106,7 +88,6 @@ public class CellBehaviour : MonoBehaviour {
 
     public void SetLight(bool light)
     {
-        Debug.Log("SetLight = " + light);
         _light = light;
         _model.material.color = light ? _litColor : _darkColor;
     }
