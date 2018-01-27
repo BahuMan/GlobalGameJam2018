@@ -211,8 +211,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 41.474045, y: 23.153357, z: 100.33603}
-  m_Center: {x: 0.13894513, y: 11.576663, z: 36.871494}
+  m_Size: {x: 41.474045, y: 63.67818, z: 100.33603}
+  m_Center: {x: 0.13894439, y: 31.839071, z: 36.871494}
 --- !u!65 &65812047599846210
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -223,8 +223,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 69.36734, y: 23.153357, z: 40.546513}
-  m_Center: {x: 14.5446415, y: 11.576663, z: 36.80848}
+  m_Size: {x: 69.36734, y: 64.45823, z: 40.54652}
+  m_Center: {x: 14.5446415, y: 32.229095, z: 36.80846}
 --- !u!95 &95404683416282656
 Animator:
   serializedVersion: 3
@@ -265,3 +265,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _connected: 7
+  LerpSpeed: 1
