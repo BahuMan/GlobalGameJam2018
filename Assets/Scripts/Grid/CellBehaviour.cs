@@ -12,30 +12,18 @@ public class CellBehaviour : MonoBehaviour {
     private DirectionEnum _connected;
 
     private bool _light = false;
+    private Color _signalColor = Color.magenta;
 
     private Quaternion ROTATE_CLOCK = Quaternion.Euler(0, 90, 0);
     private Quaternion ROTATE_COUNTER = Quaternion.Euler(0, -90, 0);
 
-    public void SignalNorth()
+    public void SignalFromDirection(DirectionEnum worldDir, Color beamColor)
     {
-        SignalFromDirection(DirectionEnum.NORTH);
-    }
-
-    public void SignalSouth()
-    {
-        SignalFromDirection(DirectionEnum.SOUTH);
-    }
-    public void SignalEast()
-    {
-        SignalFromDirection(DirectionEnum.EAST);
-    }
-    public void SignalWest()
-    {
-        SignalFromDirection(DirectionEnum.WEST);
-    }
-    public void SignalFromDirection(DirectionEnum worldDir)
-    {
-        SetLight((worldDir & _connected) > 0);
+        if ((worldDir & _connected) > 0)
+        {
+            _signalColor = beamColor;
+            SetLight(true) ;
+        }
     }
 
     public bool IsOutgoing(DirectionEnum worldDir)
@@ -83,9 +71,13 @@ public class CellBehaviour : MonoBehaviour {
         if (OnLightSwitched != null) OnLightSwitched(light);
     }
 
-    public bool GetLight()
+    public bool isLit()
     {
         return _light;
     }
 
+    public Color GetSignalColor()
+    {
+        return _signalColor;
+    }
 }

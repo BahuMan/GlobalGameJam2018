@@ -2,4 +2,5 @@
 
 public class GeneratorBehaviour: MonoBehaviour
 {
+    public Color signalColor;
 }

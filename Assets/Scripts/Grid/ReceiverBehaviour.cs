@@ -23,7 +23,6 @@ public class ReceiverBehaviour: MonoBehaviour
     {
         if (Time.time < _nextScoreTime) return;
 
-        Debug.Log("Score ++");
         _nextScoreTime = Time.time + _timeBetweenScore;
         ScoreModel.AddScore(1);
     }
