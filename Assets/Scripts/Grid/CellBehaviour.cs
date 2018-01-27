@@ -5,7 +5,7 @@ using UnityEngine;
 public class CellBehaviour : MonoBehaviour {
 
     public delegate void LightHandler(bool light);
-    public event LightHandler LightSwitched;
+    public event LightHandler OnLightSwitched;
 
     [SerializeField]
     [General.EnumFlag]
@@ -80,7 +80,7 @@ public class CellBehaviour : MonoBehaviour {
     public void SetLight(bool light)
     {
         _light = light;
-        if (LightSwitched != null) LightSwitched(light);
+        if (OnLightSwitched != null) OnLightSwitched(light);
     }
 
     public bool GetLight()

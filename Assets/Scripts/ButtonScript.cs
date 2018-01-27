@@ -25,11 +25,10 @@ public class ButtonScript : MonoBehaviour {
             tile = RayCastCheck();
             if (tile != null)
             {
+                transform.parent = tile.transform;
                 // Tile needs rotate function + 90
                 tile.RotateClockwise();
-                transform.parent = tile.transform;
                 _grid.Propagate();
-                Debug.Log("Lel");
             }
         }
 
@@ -38,8 +37,8 @@ public class ButtonScript : MonoBehaviour {
             tile = RayCastCheck();
             if (tile != null)
             {
-                tile.RotateCounterClockwise();
                 transform.parent = tile.transform;
+                tile.RotateCounterClockwise();
                 // rotate -90
                 _grid.Propagate();
             }

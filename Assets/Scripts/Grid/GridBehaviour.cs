@@ -10,8 +10,14 @@ public class GridBehaviour : MonoBehaviour
     [SerializeField]
     private CellBehaviour[] _cells;
 
-    [SerializeField]
     private GeneratorBehaviour[] _generators;
+    private ReceiverBehaviour[] _receivers;
+
+    private void Start()
+    {
+        _generators = GameObject.FindObjectsOfType<GeneratorBehaviour>();
+        _receivers = GameObject.FindObjectsOfType<ReceiverBehaviour>();
+    }
 
     [ContextMenu("Create Grid")]
     public void CreateGrid()
@@ -37,8 +43,20 @@ public class GridBehaviour : MonoBehaviour
 
     public CellBehaviour GetCellAt(int x, int z)
     {
-        if (x < 0 || x > width - 1) return null;
-        if (z < 0 || z > length- 1) return null;
+        if (x < 0 || x > width - 1 || z < 0 || z > length - 1)
+        {
+            //out of bounds, but perhaps we can find a receiver/goal at this location?
+            foreach(var receiver in _receivers)
+            {
+                int rx = (int) receiver.transform.position.x;
+                int rz = (int)receiver.transform.position.z;
+                if (x == rx && z == rz)
+                {
+                    return receiver.GetComponent<CellBehaviour>();
+                }
+            }
+            return null;
+        }
 
         return _cells[x * length + z];
     }

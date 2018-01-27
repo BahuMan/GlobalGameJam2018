@@ -13,7 +13,7 @@ public class EmissivePulse : MonoBehaviour
         _renderer = this.GetComponent<Renderer>();
         _material = _renderer.material;
         _cellBeh = this.GetComponentInParent<CellBehaviour>();
-        _cellBeh.LightSwitched += Cell_LightSwitched;
+        _cellBeh.OnLightSwitched += Cell_LightSwitched;
         this.enabled = false;
 	}
 
