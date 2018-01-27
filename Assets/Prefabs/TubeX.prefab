@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 33402048524648948}
   - component: {fileID: 23028172798265968}
   - component: {fileID: 95887628706250922}
+  - component: {fileID: 114629616822526978}
   m_Layer: 0
   m_Name: buis X
   m_TagString: Untagged
@@ -232,3 +233,14 @@ MonoBehaviour:
   _incoming: 0
   _accepted: 0
   _outgoing: 0
+--- !u!114 &114629616822526978
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1320425953244900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f778140a196a6d746bd4581f95baca03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
