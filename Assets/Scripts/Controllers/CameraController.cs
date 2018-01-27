@@ -44,7 +44,6 @@ public class CameraController : MonoBehaviour {
             if(_lerpAmt < 1)
             {
                 _camera.transform.position = Vector3.Lerp(PlayerPos.position + CameraOffSet, ZoomOutLocation.position, _lerpAmt);
-
             }
 
             _lerpAmt += Time.deltaTime * 2;

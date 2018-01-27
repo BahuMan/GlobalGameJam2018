@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 23740589125522018}
   - component: {fileID: 95404683416282656}
   - component: {fileID: 114792847233740924}
+  - component: {fileID: 65506193795670996}
+  - component: {fileID: 65812047599846210}
   m_Layer: 0
   m_Name: buis T
   m_TagString: Untagged
@@ -199,6 +201,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65506193795670996
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1145213139447238}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 41.474045, y: 23.153357, z: 100.33603}
+  m_Center: {x: 0.13894513, y: 11.576663, z: 36.871494}
+--- !u!65 &65812047599846210
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1145213139447238}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 69.36734, y: 23.153357, z: 40.546513}
+  m_Center: {x: 14.5446415, y: 11.576663, z: 36.80848}
 --- !u!95 &95404683416282656
 Animator:
   serializedVersion: 3
