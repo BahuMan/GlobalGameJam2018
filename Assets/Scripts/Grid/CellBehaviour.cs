@@ -92,10 +92,12 @@ public class CellBehaviour : MonoBehaviour {
             _lerpAmt += Time.deltaTime;
             yield return null;
         }
+
         _player.GetComponent<ButtonScript>().enabled = true;
         _player.GetComponent<TopDownController>().enabled = true;
-
         _player = null;
+
+        transform.eulerAngles = _targetRotation;
 
     }
 
