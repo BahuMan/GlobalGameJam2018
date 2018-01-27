@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 
+    private float _lerpAmt = 0;
+    private bool _zoomedOut = false;
     private Camera _camera;
     public Transform PlayerPos;
     
@@ -22,23 +24,38 @@ public class CameraController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        FollowPlayer();
+        if (!_zoomedOut)
+            FollowPlayer();
         ZoomOut();
+        _camera.transform.LookAt(PlayerPos);
     }
 
     private void FollowPlayer()
     {
-        _camera.transform.position = PlayerPos.position + CameraOffSet;
-        _camera.transform.LookAt(PlayerPos);
+        _camera.transform.position = Vector3.Lerp(transform.position, PlayerPos.position + CameraOffSet, 0.5f) ;
+
     }
 
     private void ZoomOut()
     {
         if (Input.GetButton("CameraZoom"))
         {
-            _camera.transform.position = ZoomOutLocation.position;
-            _camera.transform.eulerAngles = ZoomOutLocation.eulerAngles;
+            _zoomedOut = true;
+            if(_lerpAmt < 1)
+            {
+                _camera.transform.position = Vector3.Lerp(PlayerPos.position + CameraOffSet, ZoomOutLocation.position, _lerpAmt);
+
+            }
+
+            _lerpAmt += Time.deltaTime * 2;
             Debug.Log("Button down");
+        }
+
+        if (Input.GetButtonUp("CameraZoom"))
+        {
+            _zoomedOut = false;
+            _lerpAmt = 0;
+
         }
     }
 }
