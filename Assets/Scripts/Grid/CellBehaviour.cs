@@ -4,44 +4,97 @@
 public class CellBehaviour : MonoBehaviour {
 
     [SerializeField]
-    private Renderer _renderer;
+    private Renderer _model;
 
     [SerializeField]
-    Color _litColor;
+    private Color _litColor;
     [SerializeField]
-    Color _darkColor;
+    private Color _darkColor;
 
-    private bool _lit = false;
-    private bool _dirty = false;
+    [SerializeField]
+    [General.EnumFlag]
+    private DirectionEnum _connected;
 
-    [ContextMenu("Light")]
-    public void Light()
+    private bool _light = false;
+
+    private Quaternion ROTATE_CLOCK = Quaternion.Euler(0, 90, 0);
+    private Quaternion ROTATE_COUNTER = Quaternion.Euler(0, 90, 0);
+
+    public delegate bool IsSignalAcceptedHandler(Vector3 normalizedLocalDirection);
+    public IsSignalAcceptedHandler IsSignalAccepted;
+
+    private void SetIncoming(DirectionEnum dir)
     {
-        _lit = true;
-        _dirty = true;
+        SetLight((dir & _connected) > 0);
+    }
+
+    public void SignalNorth()
+    {
+        SignalFromDirection(DirectionEnum.NORTH);
+    }
+
+    public void SignalSouth()
+    {
+        SignalFromDirection(DirectionEnum.SOUTH);
+    }
+    public void SignalEast()
+    {
+        SignalFromDirection(DirectionEnum.EAST);
+    }
+    public void SignalWest()
+    {
+        SignalFromDirection(DirectionEnum.WEST);
+    }
+    public void SignalFromDirection(DirectionEnum worldDir)
+    {
+        Quaternion worldRot = Quaternion.Euler(0, Direction.ToAngle(worldDir), 0);
+        Quaternion localRot = Quaternion.Inverse(this.transform.rotation) * worldRot;
+        DirectionEnum localDir = Direction.FromAngle(localRot.eulerAngles.y);
+        SetIncoming(localDir);
+    }
+
+    public bool IsOutgoing(DirectionEnum worldDir)
+    {
+        Quaternion worldRot = Quaternion.Euler(0, Direction.ToAngle(worldDir), 0);
+        Quaternion localRot = Quaternion.Inverse(this.transform.rotation) * worldRot;
+        DirectionEnum localDir = Direction.FromAngle(localRot.eulerAngles.y);
+
+        return _light && (_connected & localDir) == localDir;
+    }
+
+    [ContextMenu("Clockwise")]
+    public void RotateClockwise()
+    {
+        _model.transform.rotation *= ROTATE_CLOCK;
+    }
+
+    [ContextMenu("Counter")]
+    public void RotateCounterClockwise()
+    {
+        _model.transform.rotation *= ROTATE_COUNTER;
     }
 
     [ContextMenu("Dark")]
-    public void Dark()
+    public void GoDark()
     {
-        _lit = false;
-        _dirty = true;
+        SetLight(false);
     }
 
-    private void Update()
+    [ContextMenu("Light")]
+    public void GoLight()
     {
-        if (!_dirty) return;
-
-        _renderer.material.color = _lit ? _litColor : _darkColor;
+        SetLight(true);
     }
 
-    public bool GetDirty()
+    public void SetLight(bool light)
     {
-        return _dirty;
+        _light = light;
+        _model.material.color = light ? _litColor : _darkColor;
     }
 
-    public bool GetLit()
+    public bool GetLight()
     {
-        return _lit;
+        return _light;
     }
+
 }
