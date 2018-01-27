@@ -47,7 +47,6 @@ public class CameraController : MonoBehaviour {
             }
 
             _lerpAmt += Time.deltaTime * 2;
-            Debug.Log("Button down");
         }
 
         if (Input.GetButtonUp("CameraZoom"))

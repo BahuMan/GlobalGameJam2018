@@ -9,7 +9,8 @@ public class ChangeSignal: MonoBehaviour
     [SerializeField]
     private Renderer _preview;
 
-    private void OnValidate()
+    [ContextMenu("Preview")]
+    public void previewColor()
     {
         if (_preview != null)
         {
@@ -21,6 +22,7 @@ public class ChangeSignal: MonoBehaviour
     {
         _cell = GetComponent<CellBehaviour>();
         _cell.OnLightSwitched += Cell_OnLightSwitched;
+        previewColor();
     }
 
     private void Cell_OnLightSwitched(bool light)

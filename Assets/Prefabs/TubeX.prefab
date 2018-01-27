@@ -254,6 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _connected: -1
+  LerpSpeed: 3
 --- !u!114 &114629616822526978
 MonoBehaviour:
   m_ObjectHideFlags: 1

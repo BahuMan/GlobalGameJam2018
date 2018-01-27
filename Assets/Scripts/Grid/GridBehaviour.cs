@@ -8,6 +8,7 @@ public class GridBehaviour : MonoBehaviour
     public CellBehaviour[] cellPrefabs;
 
     [SerializeField]
+    [HideInInspector]
     private CellBehaviour[] _cells;
 
     private GeneratorBehaviour[] _generators;
@@ -17,6 +18,7 @@ public class GridBehaviour : MonoBehaviour
     {
         _generators = GameObject.FindObjectsOfType<GeneratorBehaviour>();
         _receivers = GameObject.FindObjectsOfType<ReceiverBehaviour>();
+        Propagate();
     }
 
     [ContextMenu("Create Grid")]
@@ -31,6 +33,9 @@ public class GridBehaviour : MonoBehaviour
             {
                 Vector3 pos = new Vector3(x, 0, z);
                 CellBehaviour cell = Instantiate<CellBehaviour>(cellPrefabs[Random.Range(0, cellPrefabs.Length)], pos, Quaternion.identity, this.transform);
+
+                ChangeSignal c = cell.GetComponent<ChangeSignal>();
+                if (c != null) c._signalColor = Random.ColorHSV(0f, 1f, .5f, 1f, .5f, 1f);
                 _cells[x * length + z] = cell;
             }
         }
