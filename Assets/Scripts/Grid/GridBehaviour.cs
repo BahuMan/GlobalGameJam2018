@@ -60,6 +60,7 @@ public class GridBehaviour : MonoBehaviour
     public void Propagate()
     {
 
+        ClearSignal();
 
         foreach (GeneratorBehaviour generators in _generators)
         {

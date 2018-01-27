@@ -55,7 +55,7 @@ public class ButtonScript : MonoBehaviour {
 
         if (Physics.Raycast(ray, out hit, 5))
         {
-            returnValue = hit.collider.gameObject.GetComponent<CellBehaviour>();
+            returnValue = hit.collider.gameObject.GetComponentInParent<CellBehaviour>();
         }
 
         else returnValue = null;

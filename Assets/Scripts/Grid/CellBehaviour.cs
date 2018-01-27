@@ -14,7 +14,7 @@ public class CellBehaviour : MonoBehaviour {
     private bool _light = false;
 
     private Quaternion ROTATE_CLOCK = Quaternion.Euler(0, 90, 0);
-    private Quaternion ROTATE_COUNTER = Quaternion.Euler(0, 90, 0);
+    private Quaternion ROTATE_COUNTER = Quaternion.Euler(0, -90, 0);
 
     public void SignalNorth()
     {
