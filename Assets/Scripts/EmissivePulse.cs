@@ -20,7 +20,7 @@ public class EmissivePulse : MonoBehaviour
     private void Cell_LightSwitched(bool light)
     {
         this.enabled = light;
-        _colorBlack = _cellBeh.GetSignalColor();
+        _colorBlack = _cellBeh.SignalColor;
         _material.SetColor("_EmissionColor", Color.black); //always start/end at black (no emisson)
     }
 

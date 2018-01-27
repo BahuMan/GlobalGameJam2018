@@ -98,7 +98,7 @@ public class GridBehaviour : MonoBehaviour
         if (cell != null && !cell.isLit()) {
 
             cell.SignalFromDirection(fromWorldDirection, beamColor);
-            beamColor = cell.GetSignalColor();
+            beamColor = cell.SignalColor;
 
             if (cell.IsOutgoing(DirectionEnum.NORTH)) Propagate(DirectionEnum.SOUTH, beamColor, GetCellAt(cell.transform.position + Vector3.forward));
             if (cell.IsOutgoing(DirectionEnum.EAST))  Propagate(DirectionEnum.WEST,  beamColor, GetCellAt(cell.transform.position + Vector3.right));

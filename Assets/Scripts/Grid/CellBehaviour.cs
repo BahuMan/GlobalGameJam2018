@@ -13,6 +13,7 @@ public class CellBehaviour : MonoBehaviour {
 
     private bool _light = false;
     private Color _signalColor = Color.magenta;
+    public Color SignalColor { get { return _signalColor; } set { _signalColor = value; } }
 
     private Quaternion ROTATE_CLOCK = Quaternion.Euler(0, 90, 0);
     private Quaternion ROTATE_COUNTER = Quaternion.Euler(0, -90, 0);
@@ -76,8 +77,4 @@ public class CellBehaviour : MonoBehaviour {
         return _light;
     }
 
-    public Color GetSignalColor()
-    {
-        return _signalColor;
-    }
 }
