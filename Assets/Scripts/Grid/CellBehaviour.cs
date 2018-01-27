@@ -24,6 +24,8 @@ public class CellBehaviour : MonoBehaviour {
     private float _lerpAmt;
     private GameObject _player;
 
+    public float LerpSpeed = 1;
+
     public void SignalFromDirection(DirectionEnum worldDir, Color beamColor)
     {
         if ((worldDir & _connected) > 0)
@@ -89,7 +91,7 @@ public class CellBehaviour : MonoBehaviour {
         while (_lerpAmt < 1)
         {
             transform.eulerAngles = Vector3.Lerp(_currentRotation, _targetRotation, _lerpAmt);
-            _lerpAmt += Time.deltaTime;
+            _lerpAmt += Time.deltaTime * LerpSpeed;
             yield return null;
         }
 
