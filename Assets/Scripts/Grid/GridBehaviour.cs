@@ -7,10 +7,7 @@ public class GridBehaviour : MonoBehaviour
     public int length = 5;
     public CellBehaviour[] cellPrefabs;
 
-    [SerializeField]
-    [HideInInspector]
-    private CellBehaviour[] _cells;
-
+    private CellBehaviour[] _allCells;
     private GeneratorBehaviour[] _generators;
     private ReceiverBehaviour[] _receivers;
 
@@ -18,15 +15,13 @@ public class GridBehaviour : MonoBehaviour
     {
         _generators = GameObject.FindObjectsOfType<GeneratorBehaviour>();
         _receivers = GameObject.FindObjectsOfType<ReceiverBehaviour>();
+        _allCells = GameObject.FindObjectsOfType<CellBehaviour>();
         Propagate();
     }
 
     [ContextMenu("Create Grid")]
     public void CreateGrid()
     {
-        if (_cells != null) foreach (var cell in _cells) Destroy(cell);
-        _cells = new CellBehaviour[width * length];
-
         for (int x = 0; x < width; ++x)
         {
             for (int z = 0; z < length; ++z)
@@ -36,46 +31,29 @@ public class GridBehaviour : MonoBehaviour
 
                 ChangeSignal c = cell.GetComponent<ChangeSignal>();
                 if (c != null) c._signalColor = Random.ColorHSV(0f, 1f, .5f, 1f, .5f, 1f);
-                _cells[x * length + z] = cell;
             }
         }
     }
 
     public CellBehaviour GetCellAt(Vector3 pos)
     {
-        return GetCellAt((int)pos.x, (int)pos.z);
-    }
 
-    public CellBehaviour GetCellAt(int x, int z)
-    {
-        if (x < 0 || x > width - 1 || z < 0 || z > length - 1)
+        Collider[] colliders = Physics.OverlapSphere(pos, .1f);
+        foreach(var col in colliders)
         {
-            //out of bounds, but perhaps we can find a receiver/goal at this location?
-            foreach(var receiver in _receivers)
-            {
-                int rx = (int) receiver.transform.position.x;
-                int rz = (int)receiver.transform.position.z;
-                if (x == rx && z == rz)
-                {
-                    return receiver.GetComponent<CellBehaviour>();
-                }
-            }
-            return null;
+            CellBehaviour cell = col.GetComponentInParent<CellBehaviour>();
+            if (cell != null) return cell;
         }
-
-        return _cells[x * length + z];
+        if (colliders.Length > 0) Debug.LogError("found " + colliders.Length + " colliders, but none contained a cell");
+        return null;
     }
 
     [ContextMenu("Clear")]
     public void ClearSignal()
     {
-        //clear signal:
-        for (int x = 0; x < width; ++x)
+        foreach (var cell in _allCells)
         {
-            for (int z = 0; z < length; ++z)
-            {
-                GetCellAt(x, z).GoDark();
-            }
+            cell.GoDark();
         }
     }
 
