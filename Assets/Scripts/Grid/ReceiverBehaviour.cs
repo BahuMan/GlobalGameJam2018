@@ -19,12 +19,5 @@ public class ReceiverBehaviour: MonoBehaviour
         Debug.Log("Goal is lit up");
     }
 
-    private void Update()
-    {
-        if (Time.time < _nextScoreTime) return;
-
-        _nextScoreTime = Time.time + _timeBetweenScore;
-        ScoreModel.AddScore(1);
-    }
 }
 
