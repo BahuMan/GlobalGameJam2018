@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class ButtonScript : MonoBehaviour {
 
-    private GameObject tile;
+    private GridBehaviour _grid;
+
+    private void Start()
+    {
+        _grid = GameObject.FindObjectOfType<GridBehaviour>();
+    }
 
     private void Update()
     {
@@ -13,13 +18,17 @@ public class ButtonScript : MonoBehaviour {
 
     private void InputHandler()
     {
+        CellBehaviour tile;
+
         if (Input.GetButtonDown("Fire1"))
         {
             tile = RayCastCheck();
             if (tile != null)
             {
                 // Tile needs rotate function + 90
+                tile.RotateClockwise();
                 transform.parent = tile.transform;
+                _grid.Propagate();
                 Debug.Log("Lel");
             }
         }
@@ -29,22 +38,24 @@ public class ButtonScript : MonoBehaviour {
             tile = RayCastCheck();
             if (tile != null)
             {
+                tile.RotateCounterClockwise();
                 transform.parent = tile.transform;
                 // rotate -90
+                _grid.Propagate();
             }
         }
     }
 
 
-    private GameObject RayCastCheck()
+    private CellBehaviour RayCastCheck()
     {
-        GameObject returnValue;
+        CellBehaviour returnValue;
         Ray ray = new Ray(this.transform.position, transform.up * -1);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, 5))
         {
-            returnValue = hit.collider.gameObject;
+            returnValue = hit.collider.gameObject.GetComponent<CellBehaviour>();
         }
 
         else returnValue = null;
