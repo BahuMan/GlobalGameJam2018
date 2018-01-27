@@ -3,6 +3,7 @@ using UnityEngine;
 
 public enum DirectionEnum
 {
+    EMPTY = 0,
     NORTH = 1,
     EAST = 2,
     SOUTH = 4,
@@ -50,5 +51,55 @@ public class Direction {
 
         Debug.LogError("Cannot convert angle " + angle + " to dir");
         return DirectionEnum.NORTH;
+    }
+
+    public static DirectionEnum RotateClockWise(DirectionEnum input)
+    {
+        DirectionEnum output = DirectionEnum.EMPTY;
+
+
+        if (Contains(input, DirectionEnum.WEST))
+            output = Add(output, DirectionEnum.NORTH);
+
+        if (Contains(input, DirectionEnum.NORTH))
+            output = Add(output, DirectionEnum.EAST);
+
+        if (Contains(input, DirectionEnum.EAST))
+            output = Add(output, DirectionEnum.SOUTH);
+
+        if (Contains(input, DirectionEnum.SOUTH))
+            output = Add(output, DirectionEnum.WEST);
+        
+
+        return output;
+    }
+
+    public static DirectionEnum RotateCounterClockWise(DirectionEnum input)
+    {
+        DirectionEnum output = DirectionEnum.EMPTY;
+
+        if (Contains(input, DirectionEnum.EAST))
+            output = Add(output, DirectionEnum.NORTH);
+
+        if (Contains(input, DirectionEnum.SOUTH))
+            output = Add(output, DirectionEnum.EAST);
+
+        if (Contains(input, DirectionEnum.WEST))
+            output = Add(output, DirectionEnum.SOUTH);
+
+        if (Contains(input, DirectionEnum.NORTH))
+            output = Add(output, DirectionEnum.WEST);
+
+        return output;
+    }
+
+    public static bool Contains(DirectionEnum input, DirectionEnum toCheck)
+    {
+        return (input & toCheck) == toCheck;
+    }
+
+    public static DirectionEnum Add(DirectionEnum input, DirectionEnum addit)
+    {
+        return (input | addit);
     }
 }
