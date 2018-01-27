@@ -1,0 +1,26 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EmissivePulse : MonoBehaviour
+{
+    private Renderer _renderer;
+    private Material _material;
+    private Color _colorBlack = new Color(1,1,1);
+    private CellBehaviour _cellBeh;
+	// Use this for initialization
+	void Start ()
+    {
+        _renderer = this.GetComponent<Renderer>();
+        _material = _renderer.material;
+        _cellBeh = this.GetComponent<CellBehaviour>();  
+	}
+	
+	// Update is called once per frame
+	void Update ()
+    {
+        float emission = Mathf.PingPong(Time.time, 1.0f);
+        Color finalColor = _colorBlack * Mathf.LinearToGammaSpace(emission);
+        _material.SetColor("_EmissionColor", finalColor);
+	}
+}

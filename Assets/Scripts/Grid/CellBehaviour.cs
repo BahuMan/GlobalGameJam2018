@@ -37,4 +37,14 @@ public class CellBehaviour : MonoBehaviour {
 
         _renderer.material.color = _lit ? _litColor : _darkColor;
     }
+
+    public bool GetDirty()
+    {
+        return _dirty;
+    }
+
+    public bool GetLit()
+    {
+        return _lit;
+    }
 }
