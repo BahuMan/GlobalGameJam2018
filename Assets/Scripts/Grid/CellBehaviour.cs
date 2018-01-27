@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 [SelectionBase]
@@ -18,6 +19,10 @@ public class CellBehaviour : MonoBehaviour {
     private Quaternion ROTATE_CLOCK = Quaternion.Euler(0, 90, 0);
     private Quaternion ROTATE_COUNTER = Quaternion.Euler(0, -90, 0);
 
+    private Vector3 _currentRotation;
+    private Vector3 _targetRotation;
+    private float _lerpAmt;
+
     public void SignalFromDirection(DirectionEnum worldDir, Color beamColor)
     {
         if ((worldDir & _connected) > 0)
@@ -35,14 +40,14 @@ public class CellBehaviour : MonoBehaviour {
     [ContextMenu("Clockwise")]
     public void RotateClockwise()
     {
-        this.transform.rotation *= ROTATE_CLOCK;
+        //this.transform.rotation *= ROTATE_CLOCK;
         this._connected = Direction.RotateClockWise(this._connected);
     }
 
     [ContextMenu("Counter")]
     public void RotateCounterClockwise()
     {
-        this.transform.rotation *= ROTATE_COUNTER;
+        //this.transform.rotation *= ROTATE_COUNTER;
         this._connected = Direction.RotateCounterClockWise(this._connected);
     }
 
@@ -75,6 +80,25 @@ public class CellBehaviour : MonoBehaviour {
     public bool isLit()
     {
         return _light;
+    }
+
+    private IEnumerator RotateTile()
+    {
+        _lerpAmt = 0;
+        while (_lerpAmt < 1)
+        {
+            transform.eulerAngles = Vector3.Lerp(_currentRotation, _targetRotation, _lerpAmt);
+            _lerpAmt += Time.deltaTime;
+            yield return null;
+        }
+
+    }
+
+    public void StartRotate(float amt)
+    {
+        _currentRotation = transform.eulerAngles;
+        _targetRotation = new Vector3(0, transform.eulerAngles.y + amt, 0);
+        StartCoroutine("RotateTile");
     }
 
 }
