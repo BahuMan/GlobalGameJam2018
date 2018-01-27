@@ -70,7 +70,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1954389424213232}
-  m_LocalRotation: {x: -0, y: 0.7071067, z: -0, w: 0.70710695}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -78,20 +78,20 @@ Transform:
   - {fileID: 4407878631637778}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4407878631637778
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1149927666419824}
-  m_LocalRotation: {x: 0.00000017881392, y: 0.7071068, z: 0.000000014901159, w: 0.70710677}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.495, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 4036910917764752}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4542051698807390
 Transform:
   m_ObjectHideFlags: 1
@@ -230,9 +230,7 @@ MonoBehaviour:
   _model: {fileID: 0}
   _litColor: {r: 0.9264706, g: 0.17030708, b: 0.17030708, a: 0}
   _darkColor: {r: 0, g: 0, b: 0, a: 0}
-  _incoming: 0
-  _accepted: 0
-  _outgoing: 0
+  _connected: 6
 --- !u!114 &114767409640061348
 MonoBehaviour:
   m_ObjectHideFlags: 1

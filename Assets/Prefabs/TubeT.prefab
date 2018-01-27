@@ -241,6 +241,4 @@ MonoBehaviour:
   _model: {fileID: 0}
   _litColor: {r: 0.9264706, g: 0.17030708, b: 0.17030708, a: 0}
   _darkColor: {r: 0, g: 0, b: 0, a: 0}
-  _incoming: 0
-  _accepted: 0
-  _outgoing: 0
+  _connected: 14
