@@ -5,7 +5,7 @@ public class GridBehaviour : MonoBehaviour
 
     public int width = 5;
     public int length = 5;
-    public CellBehaviour cellPrefab;
+    public CellBehaviour[] cellPrefabs;
 
     [SerializeField]
     private CellBehaviour[] _cells;
@@ -24,7 +24,7 @@ public class GridBehaviour : MonoBehaviour
             for (int z = 0; z < length; ++z)
             {
                 Vector3 pos = new Vector3(x, 0, z);
-                CellBehaviour cell = Instantiate<CellBehaviour>(cellPrefab, pos, Quaternion.identity, this.transform);
+                CellBehaviour cell = Instantiate<CellBehaviour>(cellPrefabs[Random.Range(0, cellPrefabs.Length)], pos, Quaternion.identity, this.transform);
                 _cells[x * length + z] = cell;
             }
         }
@@ -64,26 +64,26 @@ public class GridBehaviour : MonoBehaviour
         foreach (GeneratorBehaviour generators in _generators)
         {
             //NORTH
-            Propagate(GetCellAt(generators.transform.position + Vector3.forward));
+            Propagate(DirectionEnum.NORTH, GetCellAt(generators.transform.position + Vector3.forward));
             //EAST
-            Propagate(GetCellAt(generators.transform.position + Vector3.right));
+            Propagate(DirectionEnum.EAST, GetCellAt(generators.transform.position + Vector3.right));
             //SOUTH
-            Propagate(GetCellAt(generators.transform.position - Vector3.forward));
+            Propagate(DirectionEnum.SOUTH, GetCellAt(generators.transform.position - Vector3.forward));
             //WEST
-            Propagate(GetCellAt(generators.transform.position - Vector3.right));
+            Propagate(DirectionEnum.WEST, GetCellAt(generators.transform.position - Vector3.right));
 
         }
     }
 
-    public void Propagate(CellBehaviour cell) {
+    public void Propagate(DirectionEnum fromWorldDirection, CellBehaviour cell) {
         if (cell != null && !cell.GetLight()) {
 
-            cell.GoLight();
+            cell.SignalFromDirection(fromWorldDirection);
 
-            if (cell.IsOutgoing(DirectionEnum.NORTH)) Propagate(GetCellAt(cell.transform.position + Vector3.forward));
-            if (cell.IsOutgoing(DirectionEnum.EAST)) Propagate(GetCellAt(cell.transform.position + Vector3.right));
-            if (cell.IsOutgoing(DirectionEnum.SOUTH)) Propagate(GetCellAt(cell.transform.position - Vector3.forward));
-            if (cell.IsOutgoing(DirectionEnum.WEST)) Propagate(GetCellAt(cell.transform.position - Vector3.right));
+            if (cell.IsOutgoing(DirectionEnum.NORTH)) Propagate(DirectionEnum.NORTH, GetCellAt(cell.transform.position + Vector3.forward));
+            if (cell.IsOutgoing(DirectionEnum.EAST))  Propagate(DirectionEnum.EAST,  GetCellAt(cell.transform.position + Vector3.right));
+            if (cell.IsOutgoing(DirectionEnum.SOUTH)) Propagate(DirectionEnum.SOUTH, GetCellAt(cell.transform.position - Vector3.forward));
+            if (cell.IsOutgoing(DirectionEnum.WEST))  Propagate(DirectionEnum.WEST,  GetCellAt(cell.transform.position - Vector3.right));
         }
     }
 }

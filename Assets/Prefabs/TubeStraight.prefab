@@ -227,9 +227,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aae2868c8648fa48a839e3e151a8fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _model: {fileID: 0}
-  _litColor: {r: 0.9264706, g: 0.17030708, b: 0.17030708, a: 0}
-  _darkColor: {r: 0, g: 0, b: 0, a: 0}
   _connected: 10
 --- !u!114 &114831307844313366
 MonoBehaviour:

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 public class EmissivePulse : MonoBehaviour
@@ -13,11 +12,18 @@ public class EmissivePulse : MonoBehaviour
     {
         _renderer = this.GetComponent<Renderer>();
         _material = _renderer.material;
-        _cellBeh = this.GetComponent<CellBehaviour>();  
+        _cellBeh = this.GetComponentInParent<CellBehaviour>();
+        _cellBeh.LightSwitched += Cell_LightSwitched;
+        this.enabled = false;
 	}
-	
-	// Update is called once per frame
-	void Update ()
+
+    private void Cell_LightSwitched(bool light)
+    {
+        this.enabled = light;
+    }
+
+    // Update is called once per frame
+    void Update ()
     {
         float emission = Mathf.PingPong(Time.time, 1.0f);
         Color finalColor = _colorBlack * Mathf.LinearToGammaSpace(emission);

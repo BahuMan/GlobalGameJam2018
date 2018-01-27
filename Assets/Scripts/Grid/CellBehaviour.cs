@@ -1,15 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [SelectionBase]
 public class CellBehaviour : MonoBehaviour {
 
-    [SerializeField]
-    private Renderer _model;
-
-    [SerializeField]
-    private Color _litColor;
-    [SerializeField]
-    private Color _darkColor;
+    public delegate void LightHandler(bool light);
+    public event LightHandler LightSwitched;
 
     [SerializeField]
     [General.EnumFlag]
@@ -65,13 +61,13 @@ public class CellBehaviour : MonoBehaviour {
     [ContextMenu("Clockwise")]
     public void RotateClockwise()
     {
-        _model.transform.rotation *= ROTATE_CLOCK;
+        this.transform.rotation *= ROTATE_CLOCK;
     }
 
     [ContextMenu("Counter")]
     public void RotateCounterClockwise()
     {
-        _model.transform.rotation *= ROTATE_COUNTER;
+        this.transform.rotation *= ROTATE_COUNTER;
     }
 
     [ContextMenu("Dark")]
@@ -86,10 +82,16 @@ public class CellBehaviour : MonoBehaviour {
         SetLight(true);
     }
 
+    [ContextMenu("Print Connection")]
+    public void PrintConnection()
+    {
+        Debug.Log("Connections: " + this._connected  + ", bin = " + Convert.ToString((int)this._connected, 2) + " = " + Direction.ToString(this._connected));
+    }
+
     public void SetLight(bool light)
     {
         _light = light;
-        _model.material.color = light ? _litColor : _darkColor;
+        if (LightSwitched != null) LightSwitched(light);
     }
 
     public bool GetLight()

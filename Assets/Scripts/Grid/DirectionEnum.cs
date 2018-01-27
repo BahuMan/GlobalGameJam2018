@@ -1,4 +1,5 @@
 ﻿
+using System.Text;
 using UnityEngine;
 
 public enum DirectionEnum
@@ -101,5 +102,15 @@ public class Direction {
     public static DirectionEnum Add(DirectionEnum input, DirectionEnum addit)
     {
         return (input | addit);
+    }
+
+    public static string ToString(DirectionEnum dir)
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.Append(Contains(dir, DirectionEnum.NORTH)? 'N': 'n');
+        sb.Append(Contains(dir, DirectionEnum.EAST) ? 'E' : 'e');
+        sb.Append(Contains(dir, DirectionEnum.SOUTH) ? 'S' : 's');
+        sb.Append(Contains(dir, DirectionEnum.WEST) ? 'W' : 'w');
+        return sb.ToString();
     }
 }
