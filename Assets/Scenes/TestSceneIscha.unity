@@ -406,33 +406,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 4229036750634736, guid: 79ed0152db3423e4eb14b337d0137459, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4229036750634736, guid: 79ed0152db3423e4eb14b337d0137459, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4229036750634736, guid: 79ed0152db3423e4eb14b337d0137459, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 143143611565792238, guid: 79ed0152db3423e4eb14b337d0137459,
-        type: 2}
-      propertyPath: m_Radius
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 143143611565792238, guid: 79ed0152db3423e4eb14b337d0137459,
-        type: 2}
-      propertyPath: m_StepOffset
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 143143611565792238, guid: 79ed0152db3423e4eb14b337d0137459,
-        type: 2}
-      propertyPath: m_SlopeLimit
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 79ed0152db3423e4eb14b337d0137459, type: 2}
   m_IsPrefabParent: 0
