@@ -89,7 +89,12 @@ public class CannonScript : MonoBehaviour
     {
 
         Debug.Log("Cannon = " + CannonColor + ", incoming = " + signalColor);
-        if ((int)signalColor.r*100 == (int)CannonColor.r*100 && (int)signalColor.g*100 == (int)CannonColor.g*100 && (int)signalColor.b*100 == (int)CannonColor.b*100)
+
+        bool r = (int)(signalColor.r * 100) == (int)(CannonColor.r * 100);
+        bool g = (int)(signalColor.g * 100) == (int)(CannonColor.g * 100);
+        bool b = (int)(signalColor.b * 100) == (int)(CannonColor.b * 100);
+
+        if (r && g && b)
         {
             return true;
         }
