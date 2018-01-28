@@ -1,13 +1,19 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GamemanagerScript : MonoBehaviour
 {
     private CannonScript[] _cannons;
     private GridBehaviour _gridBeh;
     private int _winCounter;
+
+    [SerializeField]
+    private RectTransform _transmittingText;
+
+    [SerializeField]
+    private RectTransform _choiceMenu;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -29,13 +35,25 @@ public class GamemanagerScript : MonoBehaviour
 
         if (_winCounter == _cannons.Length)
         {
-            ExecuteWinScreen();
+            StartCoroutine(ExecuteWinScreen());
         }
     }
 
-    private void ExecuteWinScreen()
+    private IEnumerator ExecuteWinScreen()
     {
-        throw new NotImplementedException();
+        if (_transmittingText != null)
+        {
+            _transmittingText.gameObject.SetActive(true);
+        }
+        yield return new WaitForSeconds(1f);
+
+        if (_choiceMenu != null)
+        {
+            _choiceMenu.gameObject.SetActive(true);
+        }
+        yield return new WaitForSeconds(5f);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     //check if all the cannons are powered with propegate event
