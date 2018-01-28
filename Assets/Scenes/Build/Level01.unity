@@ -1497,7 +1497,7 @@ Prefab:
     - target: {fileID: 114368714192104164, guid: 1bce7923caebb1144b4f126c454c4c44,
         type: 2}
       propertyPath: _connected
-      value: 12
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4036910917764752, guid: 1bce7923caebb1144b4f126c454c4c44, type: 2}
       propertyPath: m_LocalScale.x
@@ -2461,6 +2461,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f2354be9a63e34c9706f16887f1116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BeamTime: 4.5
+  _transmittingText: {fileID: 0}
+  _choiceMenu: {fileID: 1711466617}
 --- !u!114 &302059618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2746,7 +2749,7 @@ Prefab:
     - target: {fileID: 114795653519746362, guid: 8b268c5ecd9a376409b239011e9f544b,
         type: 2}
       propertyPath: _connected
-      value: 12
+      value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 1436364305784446, guid: 8b268c5ecd9a376409b239011e9f544b, type: 2}
       propertyPath: m_Name
@@ -3815,7 +3818,7 @@ Prefab:
     - target: {fileID: 114795653519746362, guid: 8b268c5ecd9a376409b239011e9f544b,
         type: 2}
       propertyPath: _connected
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1436364305784446, guid: 8b268c5ecd9a376409b239011e9f544b, type: 2}
       propertyPath: m_Name
@@ -6634,7 +6637,7 @@ Prefab:
     - target: {fileID: 114368714192104164, guid: 1bce7923caebb1144b4f126c454c4c44,
         type: 2}
       propertyPath: _connected
-      value: 12
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1bce7923caebb1144b4f126c454c4c44, type: 2}
@@ -8336,7 +8339,7 @@ Prefab:
     - target: {fileID: 114795653519746362, guid: 8b268c5ecd9a376409b239011e9f544b,
         type: 2}
       propertyPath: _connected
-      value: -1
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 4763181203858360, guid: 8b268c5ecd9a376409b239011e9f544b, type: 2}
       propertyPath: m_LocalScale.x
@@ -8899,7 +8902,7 @@ Prefab:
     - target: {fileID: 114368714192104164, guid: 1bce7923caebb1144b4f126c454c4c44,
         type: 2}
       propertyPath: _connected
-      value: 12
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4036910917764752, guid: 1bce7923caebb1144b4f126c454c4c44, type: 2}
       propertyPath: m_LocalScale.x
@@ -9405,6 +9408,10 @@ Prefab:
         type: 2}
       propertyPath: m_LocalPosition.y
       value: 89.850006
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512635222274178, guid: 6b296a23c40f74548a345df1edac30a0, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b296a23c40f74548a345df1edac30a0, type: 2}
@@ -10319,7 +10326,7 @@ Prefab:
     - target: {fileID: 114368714192104164, guid: 1bce7923caebb1144b4f126c454c4c44,
         type: 2}
       propertyPath: _connected
-      value: 12
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4036910917764752, guid: 1bce7923caebb1144b4f126c454c4c44, type: 2}
       propertyPath: m_LocalScale.x
@@ -10859,7 +10866,7 @@ Prefab:
     - target: {fileID: 114795653519746362, guid: 8b268c5ecd9a376409b239011e9f544b,
         type: 2}
       propertyPath: _connected
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1436364305784446, guid: 8b268c5ecd9a376409b239011e9f544b, type: 2}
       propertyPath: m_Name
@@ -13824,7 +13831,7 @@ Prefab:
     - target: {fileID: 114795653519746362, guid: 8b268c5ecd9a376409b239011e9f544b,
         type: 2}
       propertyPath: _connected
-      value: 12
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 1436364305784446, guid: 8b268c5ecd9a376409b239011e9f544b, type: 2}
       propertyPath: m_Name
@@ -14055,7 +14062,7 @@ Prefab:
     - target: {fileID: 114368714192104164, guid: 1bce7923caebb1144b4f126c454c4c44,
         type: 2}
       propertyPath: _connected
-      value: 12
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1bce7923caebb1144b4f126c454c4c44, type: 2}
@@ -15173,6 +15180,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 16d5453d9bd0fd34584d2b80d7e4e080, type: 2}
   m_IsPrefabParent: 0
+--- !u!224 &1711466617 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 224127852480295830, guid: 6b296a23c40f74548a345df1edac30a0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1005678528}
 --- !u!1 &1711960504
 GameObject:
   m_ObjectHideFlags: 0
@@ -15803,7 +15815,7 @@ Prefab:
     - target: {fileID: 114368714192104164, guid: 1bce7923caebb1144b4f126c454c4c44,
         type: 2}
       propertyPath: _connected
-      value: -1
+      value: -13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1bce7923caebb1144b4f126c454c4c44, type: 2}
@@ -17172,7 +17184,7 @@ Prefab:
     - target: {fileID: 114368714192104164, guid: 1bce7923caebb1144b4f126c454c4c44,
         type: 2}
       propertyPath: _connected
-      value: 12
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4036910917764752, guid: 1bce7923caebb1144b4f126c454c4c44, type: 2}
       propertyPath: m_LocalScale.x
@@ -18050,7 +18062,7 @@ Prefab:
     - target: {fileID: 114368714192104164, guid: 1bce7923caebb1144b4f126c454c4c44,
         type: 2}
       propertyPath: _connected
-      value: 12
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4036910917764752, guid: 1bce7923caebb1144b4f126c454c4c44, type: 2}
       propertyPath: m_LocalScale.x
@@ -18296,7 +18308,7 @@ Prefab:
     - target: {fileID: 114795653519746362, guid: 8b268c5ecd9a376409b239011e9f544b,
         type: 2}
       propertyPath: _connected
-      value: 12
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1436364305784446, guid: 8b268c5ecd9a376409b239011e9f544b, type: 2}
       propertyPath: m_Name

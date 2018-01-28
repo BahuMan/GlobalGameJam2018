@@ -8,6 +8,7 @@ public class GamemanagerScript : MonoBehaviour
     private GridBehaviour _gridBeh;
     private int _winCounter;
 
+    public float BeamTime = 4;
     [SerializeField]
     private RectTransform _transmittingText;
 
@@ -45,7 +46,7 @@ public class GamemanagerScript : MonoBehaviour
         {
             _transmittingText.gameObject.SetActive(true);
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(BeamTime);
 
         if (_choiceMenu != null)
         {
