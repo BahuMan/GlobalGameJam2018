@@ -29,7 +29,6 @@ public class CannonScript : MonoBehaviour
 
         //set color of the beam:
         _beam.material.color = CannonColor;
-        _beam.material.color = new Color(CannonColor.r, CannonColor.g, CannonColor.b, .5f);
         _beam.gameObject.SetActive(false);
 
         //Listen if the cellbehaviour has light
@@ -73,7 +72,6 @@ public class CannonScript : MonoBehaviour
         {
             _beam.gameObject.SetActive(state);
             if (state) _cannonParticles.Play(); else _cannonParticles.Stop();
-            Powered = state;
 
             state = !state;
             yield return new WaitForSeconds(flickertime);
