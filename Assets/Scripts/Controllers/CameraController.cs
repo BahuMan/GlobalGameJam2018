@@ -26,13 +26,15 @@ public class CameraController : MonoBehaviour {
 	void Update () {
         if (!_zoomedOut)
             FollowPlayer();
+
         ZoomOut();
-        _camera.transform.LookAt(PlayerPos);
+
     }
 
     private void FollowPlayer()
     {
-        _camera.transform.position = Vector3.Lerp(transform.position, PlayerPos.position + CameraOffSet, 0.5f) ;
+        _camera.transform.position = Vector3.Lerp(transform.position, PlayerPos.position + CameraOffSet, 0.5f);
+        _camera.transform.LookAt(PlayerPos.position);
 
     }
 
@@ -44,6 +46,7 @@ public class CameraController : MonoBehaviour {
             if(_lerpAmt < 1)
             {
                 _camera.transform.position = Vector3.Lerp(PlayerPos.position + CameraOffSet, ZoomOutLocation.position, _lerpAmt);
+                _camera.transform.eulerAngles = Vector3.Lerp(_camera.transform.eulerAngles, ZoomOutLocation.eulerAngles, _lerpAmt);
             }
 
             _lerpAmt += Time.deltaTime * 2;
