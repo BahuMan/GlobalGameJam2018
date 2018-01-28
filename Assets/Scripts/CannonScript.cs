@@ -39,7 +39,6 @@ public class CannonScript : MonoBehaviour
         _cannonRenderer.material.SetColor("_EmissionColor", CannonColor);
         //make sure powered is false
         Powered = false;
-        Debug.Log(CannonColor);
     }
 
     private void _cell_LightSwitched(bool light)
@@ -87,6 +86,8 @@ public class CannonScript : MonoBehaviour
 
     private bool ColorEqual(Color signalColor)
     {
+
+        Debug.Log("Cannon = " + CannonColor + ", incoming = " + signalColor);
         if ((int)signalColor.r*100 == (int)CannonColor.r*100 && (int)signalColor.g*100 == (int)CannonColor.g*100 && (int)signalColor.b*100 == (int)CannonColor.b*100)
         {
             return true;
