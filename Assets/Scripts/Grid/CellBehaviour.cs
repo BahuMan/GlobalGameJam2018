@@ -40,17 +40,29 @@ public class CellBehaviour : MonoBehaviour {
         return _light && (_connected & worldDir) == worldDir;
     }
 
-    [ContextMenu("Clockwise")]
     public void RotateClockwise()
     {
         //this.transform.rotation *= ROTATE_CLOCK;
         this._connected = Direction.RotateClockWise(this._connected);
     }
 
-    [ContextMenu("Counter")]
     public void RotateCounterClockwise()
     {
         //this.transform.rotation *= ROTATE_COUNTER;
+        this._connected = Direction.RotateCounterClockWise(this._connected);
+    }
+
+    [ContextMenu("Clockwise")]
+    public void EditorClockwise()
+    {
+        this.transform.rotation *= ROTATE_CLOCK;
+        this._connected = Direction.RotateClockWise(this._connected);
+    }
+
+    [ContextMenu("Counter")]
+    public void EditorCounterClockwise()
+    {
+        this.transform.rotation *= ROTATE_COUNTER;
         this._connected = Direction.RotateCounterClockWise(this._connected);
     }
 
