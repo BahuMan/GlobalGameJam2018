@@ -409,7 +409,7 @@ Prefab:
     - target: {fileID: 224960297279941458, guid: 79ed0152db3423e4eb14b337d0137459,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224074914615637776, guid: 79ed0152db3423e4eb14b337d0137459,
         type: 2}
@@ -455,6 +455,36 @@ Prefab:
         type: 2}
       propertyPath: SplashScreen
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 224138521958905670, guid: 79ed0152db3423e4eb14b337d0137459,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224138521958905670, guid: 79ed0152db3423e4eb14b337d0137459,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224138521958905670, guid: 79ed0152db3423e4eb14b337d0137459,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224138521958905670, guid: 79ed0152db3423e4eb14b337d0137459,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224138521958905670, guid: 79ed0152db3423e4eb14b337d0137459,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224138521958905670, guid: 79ed0152db3423e4eb14b337d0137459,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 79ed0152db3423e4eb14b337d0137459, type: 2}
@@ -701,16 +731,6 @@ Prefab:
     - target: {fileID: 4478103274514856, guid: 9276de100fc7adf409ca13bcbfbf8e27, type: 2}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 108845252881325816, guid: 9276de100fc7adf409ca13bcbfbf8e27,
-        type: 2}
-      propertyPath: m_Range
-      value: 1.42
-      objectReference: {fileID: 0}
-    - target: {fileID: 108845252881325816, guid: 9276de100fc7adf409ca13bcbfbf8e27,
-        type: 2}
-      propertyPath: m_Intensity
-      value: 2.21
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9276de100fc7adf409ca13bcbfbf8e27, type: 2}
