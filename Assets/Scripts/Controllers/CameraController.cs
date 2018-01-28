@@ -14,12 +14,13 @@ public class CameraController : MonoBehaviour {
 
     public float CameraOffsetY = 2.3f;
     public float CameraOffSetZ = -2.3f;
+    public float CameraOffSetX = 0;
     private Vector3 CameraOffSet;
 
     // Use this for initialization
     void Start () {
         _camera = Camera.main;
-        CameraOffSet = new Vector3(0, CameraOffsetY, CameraOffSetZ);
+        CameraOffSet = new Vector3(CameraOffSetX, CameraOffsetY, CameraOffSetZ);
 	}
 	
 	// Update is called once per frame
