@@ -8,7 +8,8 @@ public class LevelStartScript : MonoBehaviour {
     public float SplashTime = 1;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         StartCoroutine("StartLevel");
 	}
 
@@ -19,7 +20,6 @@ public class LevelStartScript : MonoBehaviour {
         SplashScreen.SetActive(false);
         GetComponent<TopDownController>().enabled = true;
         GetComponent<ButtonScript>().enabled = true;
-
 
     }
 }

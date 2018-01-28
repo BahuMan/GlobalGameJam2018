@@ -146,7 +146,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1545623268208478}
   m_LocalRotation: {x: 0, y: 0, z: -0.49871466, w: 0.8667663}
-  m_LocalPosition: {x: 17.68, y: 11.3, z: 0}
+  m_LocalPosition: {x: 17.41, y: 11.21, z: 0.006}
   m_LocalScale: {x: 0.3, y: 20, z: 0.3}
   m_Children: []
   m_Father: {fileID: 4960451221831954}
@@ -159,7 +159,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1196518519229624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 0, z: 1}
+  m_LocalPosition: {x: 11, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4570810303649274}
@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _beam: {fileID: 23152430239338632}
-  CannonColor: {r: 1, g: 0.5019608, b: 0, a: 1}
+  CannonColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!136 &136439428297185414
 CapsuleCollider:
   m_ObjectHideFlags: 1
