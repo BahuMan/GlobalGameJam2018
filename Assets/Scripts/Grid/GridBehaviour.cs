@@ -2,6 +2,8 @@
 
 public class GridBehaviour : MonoBehaviour
 {
+    public delegate void SignalPropagatedHandler();
+    public event SignalPropagatedHandler OnSignalPropagated;
 
     public int width = 5;
     public int length = 5;
@@ -75,6 +77,8 @@ public class GridBehaviour : MonoBehaviour
             Propagate(DirectionEnum.EAST,  generator.signalColor, GetCellAt(generator.transform.position - Vector3.right));
 
         }
+
+        if (OnSignalPropagated != null) OnSignalPropagated();
     }
 
     public void Propagate(DirectionEnum fromWorldDirection, Color beamColor, CellBehaviour cell) {

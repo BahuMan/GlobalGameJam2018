@@ -211,7 +211,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 40.442574, y: 23.153341, z: 74.11041}
+  m_Size: {x: 40.442574, y: 70, z: 74.11041}
   m_Center: {x: 0.081218034, y: 11.576661, z: 16.811626}
 --- !u!65 &65985891973058984
 BoxCollider:
@@ -223,7 +223,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 74.07514, y: 23.153341, z: 40.408455}
+  m_Size: {x: 74.07514, y: 70, z: 40.408455}
   m_Center: {x: 16.82927, y: 11.576661, z: 0.13686493}
 --- !u!95 &95889835203782478
 Animator:
@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aae2868c8648fa48a839e3e151a8fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _connected: 3
+  _connected: -1
   LerpSpeed: 3
 --- !u!114 &114767409640061348
 MonoBehaviour:
