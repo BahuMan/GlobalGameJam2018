@@ -34,7 +34,12 @@ public class CameraController : MonoBehaviour {
     private void FollowPlayer()
     {
         _camera.transform.position = Vector3.Lerp(transform.position, PlayerPos.position + CameraOffSet, 0.5f);
-        _camera.transform.LookAt(PlayerPos.position);
+        //_camera.transform.LookAt(PlayerPos.position);
+
+        Vector3 targetRotation = PlayerPos.position - (PlayerPos.position + CameraOffSet);
+        Quaternion lookDirection = Quaternion.LookRotation(targetRotation);
+
+        _camera.transform.rotation = Quaternion.Lerp(_camera.transform.rotation, lookDirection, 0.125f);
 
     }
 
