@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class CannonScript : MonoBehaviour
 {
+
+    [SerializeField]
+    private Renderer _beam;
+
     private ParticleSystem _cannonParticles;
     public Color CannonColor;
     private CellBehaviour _cell;
@@ -22,6 +26,11 @@ public class CannonScript : MonoBehaviour
         _cannonParticles = this.GetComponentInChildren<ParticleSystem>();
         var main = _cannonParticles.main;
         main.startColor = CannonColor;
+
+        //set color of the beam:
+        _beam.material.color = CannonColor;
+        _beam.gameObject.SetActive(false);
+
         //Listen if the cellbehaviour has light
         _cell = GetComponent<CellBehaviour>();
         _cell.OnLightSwitched += _cell_LightSwitched;
@@ -36,16 +45,44 @@ public class CannonScript : MonoBehaviour
     private void _cell_LightSwitched(bool light)
     {
         Debug.Log(_cell.SignalColor);
-        if (light && ColorEqual(_cell.SignalColor))
-        {           
-            _cannonParticles.Play();
-            Powered = true;
+        if (light)
+        {
+            if (ColorEqual(_cell.SignalColor))
+            {
+                StartCoroutine(Flicker(true));
+            }
+            else
+            {
+                StartCoroutine(Flicker(false));
+            }
         }
         else
         {
+            _beam.gameObject.SetActive(false);
             _cannonParticles.Stop();
             Powered = false;
         }
+    }
+
+    private IEnumerator Flicker(bool endstate)
+    {
+        bool state = true;
+        float flickertime = .5f;
+
+        for (int i=0; i<UnityEngine.Random.Range(3, 8); ++i)
+        {
+            _beam.gameObject.SetActive(state);
+            if (state) _cannonParticles.Play(); else _cannonParticles.Stop();
+            Powered = state;
+
+            state = !state;
+            yield return new WaitForSeconds(flickertime);
+            flickertime -= .05f;
+        }
+
+        _beam.gameObject.SetActive(endstate);
+        if (endstate) _cannonParticles.Play(); else _cannonParticles.Stop();
+        Powered = endstate;
     }
 
     private bool ColorEqual(Color signalColor)

@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aae2868c8648fa48a839e3e151a8fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _connected: 5
+  _connected: -11
   LerpSpeed: 3
 --- !u!114 &114831307844313366
 MonoBehaviour:
