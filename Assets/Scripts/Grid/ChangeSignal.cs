@@ -8,13 +8,17 @@ public class ChangeSignal: MonoBehaviour
 
     [SerializeField]
     private Renderer _preview;
+    [SerializeField]
+    private Light _light;
 
     [ContextMenu("Preview")]
     public void previewColor()
     {
         if (_preview != null)
         {
-            _preview.material.color = _signalColor;
+            //_preview.material.color = _signalColor;
+            _preview.material.SetColor("_EmissionColor", _signalColor);
+            _light.color = _signalColor;
         }
     }
 
