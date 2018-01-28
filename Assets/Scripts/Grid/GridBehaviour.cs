@@ -46,7 +46,7 @@ public class GridBehaviour : MonoBehaviour
             CellBehaviour cell = col.GetComponentInParent<CellBehaviour>();
             if (cell != null) return cell;
         }
-        if (colliders.Length > 0) Debug.LogError("found " + colliders.Length + " colliders, but none contained a cell");
+        //if (colliders.Length > 0) Debug.LogError("found " + colliders.Length + " colliders, but none contained a cell");
         return null;
     }
 
