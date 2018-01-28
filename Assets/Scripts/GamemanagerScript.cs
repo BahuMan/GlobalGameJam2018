@@ -50,6 +50,7 @@ public class GamemanagerScript : MonoBehaviour
 
         if (_choiceMenu != null)
         {
+            _transmittingText.gameObject.SetActive(false);
             _choiceMenu.gameObject.SetActive(true);
         }
         yield return new WaitForSeconds(5f);
