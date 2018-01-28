@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1375793950462748}
+  m_IsPrefabParent: 1
+--- !u!1 &1375793950462748
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4079118211362272}
+  - component: {fileID: 114682070088325310}
+  m_Layer: 0
+  m_Name: Grid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4079118211362272
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1375793950462748}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114682070088325310
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1375793950462748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ce264cb7f36a8a4284c69a4fd080c9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 10
+  length: 10
+  cellPrefabs:
+  - {fileID: 114368714192104164, guid: 1bce7923caebb1144b4f126c454c4c44, type: 2}
+  - {fileID: 114654920124640990, guid: 16d5453d9bd0fd34584d2b80d7e4e080, type: 2}
+  - {fileID: 114795653519746362, guid: 8b268c5ecd9a376409b239011e9f544b, type: 2}
+  - {fileID: 114240148627433896, guid: 48c9709d3739f114e9f35ea5cda7ca28, type: 2}
+  - {fileID: 114878068343333498, guid: 9276de100fc7adf409ca13bcbfbf8e27, type: 2}
+  - {fileID: 114944049160816332, guid: 319d7ae705e5f004a8aa97412710a1df, type: 2}
