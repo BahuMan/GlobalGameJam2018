@@ -48,10 +48,12 @@ public class CannonScript : MonoBehaviour
         {
             if (ColorEqual(_cell.SignalColor))
             {
+                Powered = true;
                 StartCoroutine(Flicker(true));
             }
             else
             {
+                Powered = false;
                 StartCoroutine(Flicker(false));
             }
         }
@@ -80,7 +82,6 @@ public class CannonScript : MonoBehaviour
 
         _beam.gameObject.SetActive(endstate);
         if (endstate) _cannonParticles.Play(); else _cannonParticles.Stop();
-        Powered = endstate;
     }
 
     private bool ColorEqual(Color signalColor)
