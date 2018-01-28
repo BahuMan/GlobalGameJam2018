@@ -10,6 +10,6 @@ public class MainMenuBehaviour : MonoBehaviour {
 
     public void Play()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
